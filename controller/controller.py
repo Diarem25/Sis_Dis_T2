@@ -1,7 +1,7 @@
 import random
 import numpy as np
-from factory1 import Factory1
-from factory2 import Factory2
+from Static_plant.factory1 import Factory1
+from Dynamic_plant.factory2 import Factory2
 
 class Controller:
     def __init__(self):

@@ -1,4 +1,4 @@
-from fixed_assembly_line import FixedAssemblyLine
+from Static_plant.Static_lines.fixed_assembly_line import FixedAssemblyLine
 from base_storage import BaseStorage
 
 class Factory1:

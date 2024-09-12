@@ -1,4 +1,4 @@
-from variable_assembly_line import VariableAssemblyLine
+from Dynamic_plant.Dynamic_lines.variable_assembly_line import VariableAssemblyLine
 from variable_storage import VariableStorage
 
 class Factory2:

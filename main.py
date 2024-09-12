@@ -1,6 +1,6 @@
 import random
 import time
-from controller import Controller
+from controller.controller import Controller
 
 def main():
     random.seed(int(time.time()))  # Seed random number generator

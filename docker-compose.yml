@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  broker:
+    image: rabbitmq:3-management
+    ports:
+    - "5672:5672"
+    - "15672:15672"
+    networks:
+      - rabbitmq_net
+    expose:
+      - 5672
+      - 15672
+
+  supply_storage:
+    build: ./supply_storage
+    networks:
+      - rabbitmq_net
+    depends_on:
+      - broker
+  
+  static_plant:
+    build: ./static_plant
+    networks:
+      - rabbitmq_net
+    depends_on:
+      - supply_storage
+
+  dynamic_plant:
+    build: ./dynamic_plant
+    networks:
+      - rabbitmq_net
+    depends_on:
+      - supply_storage
+
+  product_storage:
+    build: ./product_storage
+    networks:
+      - rabbitmq_net
+    depends_on:
+      - static_plant
+      - dynamic_plant
+  
+  controller:
+    build: ./controller
+    networks:
+      - rabbitmq_net
+    depends_on:
+      - supply_storage
+      - product_storage
+
+networks:
+  rabbitmq_net: 
